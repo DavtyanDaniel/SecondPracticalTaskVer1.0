@@ -17,7 +17,7 @@ async def sender(websocket, path):
     await websocket.send(result)
     while True:
         await asyncio.sleep(10)
-        tt = manual_moon_coordinates_calculation(*ra_dec_coordinates, is_moon_going_up)
+        ra_dec_coordinates = manual_moon_coordinates_calculation(*ra_dec_coordinates, is_moon_going_up)
         result = str(ra_dec_transformer(*ra_dec_coordinates))
         await websocket.send(result)
 
