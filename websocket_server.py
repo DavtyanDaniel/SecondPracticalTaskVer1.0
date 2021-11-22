@@ -12,13 +12,13 @@ async def sender(websocket, path):
     """
     moon_coordinates1 = moon_coordinates_from_ephem(datetime.now())
     is_moon_going_up = moon_is_going_up(datetime.now())
-    tt = manual_moon_coordinates_calculation(*moon_coordinates1, is_moon_going_up)
-    result = str(ra_dec_transformer(*tt))
+    ra_dec_coordinates = manual_moon_coordinates_calculation(*moon_coordinates1, is_moon_going_up)
+    result = str(ra_dec_transformer(*ra_dec_coordinates))
     await websocket.send(result)
     while True:
         await asyncio.sleep(10)
-        tt = manual_moon_coordinates_calculation(*tt, is_moon_going_up)
-        result = str(ra_dec_transformer(*tt))
+        tt = manual_moon_coordinates_calculation(*ra_dec_coordinates, is_moon_going_up)
+        result = str(ra_dec_transformer(*ra_dec_coordinates))
         await websocket.send(result)
 
 
