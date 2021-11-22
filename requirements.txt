@@ -1,0 +1,4 @@
+ephem~=4.1
+websockets~=10.1
+aioconsole~=0.3.3
+pyngrok~=5.1.0
